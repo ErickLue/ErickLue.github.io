@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Acceso Restringido</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #524f4f;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 320px;
+        }
+
+        input[type="text"] {
+            width: 300px;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .message {
+            margin-top: 20px;
+            color: #d9534f;
+        }
+    </style>
+    <script>
+        function verificarAcceso() {
+            const nombrePermitido = "Angela";
+            const nombreIngresado = document.getElementById("nombre").value;
+            const messageDiv = document.getElementById("message");
+
+            if (nombreIngresado === nombrePermitido) {
+                messageDiv.innerHTML = "<span style='color:green;'>Acceso concedido. Bienvenida, Amorcito.</span>";
+                setTimeout(function() {
+                    window.location.href = "flor.html";
+                }, 1500); // Redirigir después de 1.5 segundos
+            } else {
+                messageDiv.textContent = "Acceso denegado. Nombre incorrecto.";
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <input type="text" id="nombre" placeholder="Escriba su nombre">
+        <button onclick="verificarAcceso()">Verificar</button>
+        <div id="message" class="message"></div>
+    </div>
+</body>
+</html>
